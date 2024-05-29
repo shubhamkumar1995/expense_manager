@@ -23,7 +23,7 @@ class Expense(models.Model):
 class Balance(models.Model):
     user_owed = models.ForeignKey(User, related_name='owed_balances', on_delete=models.CASCADE)
     user_owes = models.ForeignKey(User, related_name='owes_balances', on_delete=models.CASCADE)
-    amount = models.FloatField()
+    amount = models.FloatField(null=True, blank=True, default=0)
 
     def __str__(self):
         return f"{self.user_owes} owes {self.user_owed}: {self.amount}"
